@@ -7,7 +7,6 @@ index 6986f77cc..f578a121c 100644
  $(obj)/Image: vmlinux FORCE
  	$(call if_changed,objcopy)
 +ifeq ($(CONFIG_KPM),y)
-+	$(Q)cd $(obj) &&
-+ $(Q)$(srctree)/scripts/patch_kpm
++	$(Q)cd $(obj) && $(realpath $(srctree))/scripts/patch_kpm
 +	$(Q)mv -f $(obj)/oImage $@
 +endif
